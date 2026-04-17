@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang chủ - RikkeiMall</title>
+  <style>
+    body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
+    .card { padding: 40px; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+    h1 { color: #333; }
+    p { color: #666; font-size: 1.2em; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>RikkeiMall</h1>
+  <p th:text="${msg}">Lời chào mặc định</p>
+</div>
+</body>
+</html>
