@@ -1,0 +1,13 @@
+Phân tích logic: Tại sao cái if lại vô dụng?
+Lý do đoạn if (guestName == null) không bao giờ được chạy tới là vì cơ chế kiểm tra đầu
+vào (Argument Resolution) của Spring diễn ra TRƯỚC KHI hàm homePage được gọi.
+
+Mặc định của Annotation: Trong Spring, các annotation như @CookieValue, @RequestParam đều có
+một thuộc tính ngầm định là required = true.
+
+Chặn từ vòng gửi xe: Khi một request bay đến /home, Spring sẽ lục lọi trong Request header xem
+có cookie nào tên là guest_name không.
+
+Ném lỗi: Nếu không tìm thấy, Spring sẽ lập tức ném ra lỗi MissingRequestCookieException (tương đương
+HTTP Status 400 - Bad Request) và dừng ngay lập tức. Luồng thực thi chưa hề bước chân được vào bên trong
+hàm homePage, nên cái lệnh if của bạn viết ở trỏng bị "ra rìa" hoàn toàn.
